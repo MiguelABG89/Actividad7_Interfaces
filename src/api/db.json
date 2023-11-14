@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "nombre": "asdasd",
+      "apellidos": "asdfasd",
+      "email": "ass@asd",
+      "sexo": "Masculino",
+      "mensaje": "",
+      "condicion": true,
+      "id": 2
+    },
+    {
+      "nombre": "asdasd",
+      "apellidos": "asdfasd",
+      "email": "ass@asd",
+      "sexo": "Masculino",
+      "mensaje": "",
+      "condicion": true,
+      "id": 3
+    },
+    {
+      "nombre": "asd",
+      "apellidos": "asd",
+      "email": "a@se",
+      "sexo": "Astronauta",
+      "mensaje": "asaasasasa",
+      "condicion": true,
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
