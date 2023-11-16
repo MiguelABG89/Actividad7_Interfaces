@@ -14,7 +14,7 @@ function Formulario(){
     const [MensajeError2,setMensajeError2]= useState("");
     const [MensajeError3,setMensajeError3]= useState("");
     const [MensajeError4,setMensajeError4]= useState("");
-
+    const [ButtonActivado,setButtonActivado]= useState(true);
 
     const url = "http://localhost:5000/users";
 
@@ -51,27 +51,28 @@ function Formulario(){
                 setMensajeError("El máximo de caracteres para el Nombre son 10");
                 
             }
-
             if(ApeUser.length<=20){
                 setMensajeError2("");
             }else{
                 setMensajeError2("El máximo de caracteres para el Apellido son 20");
             }
-
             if(Email.length<=20 && Email.includes("@")){
                 setMensajeError3("");
             }else{
                 setMensajeError3("El máximo de caracteres para el email son 20 y tiene que incluir @");
             }
-
             if(Mensaje.length<=500){
                 setMensajeError4("");
             }else{
                 setMensajeError4("El máximo de caracteres para el mensaje son 500");
             }
-
+            if(NomUser.length <= 10 && ApeUser.length <= 20 && Email.length<=20 && Email.includes("@") && Mensaje.length <= 500 && Condiciones==true){
+                setButtonActivado(false)
+            }else{
+                setButtonActivado(true)
+            }
         },
-        [NomUser,ApeUser,Email,Mensaje]
+        [NomUser,ApeUser,Email,Mensaje,ButtonActivado]
     )
     useEffect(
         function(){
@@ -183,7 +184,7 @@ function Formulario(){
             <br/>
             
             <div class="form-example">
-                <button type="submit" onClick={handleSubmit}>Enviar</button>
+                <button type="submit" disabled={ButtonActivado} onClick={handleSubmit}>Enviar</button>
 
             </div>
         </form>
