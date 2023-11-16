@@ -66,13 +66,20 @@ function Formulario(){
             }else{
                 setMensajeError4("El máximo de caracteres para el mensaje son 500");
             }
-            if(NomUser.length <= 10 && ApeUser.length <= 20 && Email.length<=20 && Email.includes("@") && Mensaje.length <= 500 && Condiciones==true){
+            if(
+                (NomUser.length !==0 && NomUser.length <= 10) &&
+                (ApeUser.length !==0 && ApeUser.length <= 20) &&
+                (Email.length<=20 && Email.includes("@")) &&
+                (Sexo!=="") &&
+                (Mensaje.length <= 500) &&
+                (Condiciones==true)
+            ){
                 setButtonActivado(false)
             }else{
                 setButtonActivado(true)
             }
         },
-        [NomUser,ApeUser,Email,Mensaje,ButtonActivado]
+        [NomUser,ApeUser,Email,Sexo,Mensaje,Condiciones,ButtonActivado]
     )
     useEffect(
         function(){
@@ -106,27 +113,24 @@ function Formulario(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(NomUser.length <= 10 && ApeUser.length <= 20 && Email.includes('@') && Mensaje.length <= 500 && Condiciones==true){
+       
             usuario = {
-                nombre: NomUser,
-                apellidos: ApeUser,
-                email: Email,
-                sexo: Sexo,
-                mensaje: Mensaje,
-                condicion: Condiciones
-            };
-            fetchPost(url,usuario).then((resetear)=>{
-                setNomUser("");
-                setApeUser("");
-                setEmail("");
-                setMensaje("");
-                setCondiciones(false)
-            });
-            console.log(usuario);
-            alert("Usuario creado")
-
-            
-        }
+            nombre: NomUser,
+            apellidos: ApeUser,
+            email: Email,
+            sexo: Sexo,
+            mensaje: Mensaje,
+            condicion: Condiciones
+        };
+        fetchPost(url,usuario).then(()=>{
+            setNomUser("");
+            setApeUser("");
+            setEmail("");
+            setMensaje("");
+            setCondiciones(false)
+        });
+        console.log(usuario);
+        alert("Usuario creado")
         
     }
 
@@ -145,7 +149,7 @@ function Formulario(){
             <div class="form-example">
                 <label for="email">Introduce el apellido de usuario: </label>
                 <br/>
-                <input type="email" value={ApeUser} id="email" onChange={handleInputChangeApe} />
+                <input type="text" value={ApeUser} id="email" onChange={handleInputChangeApe} />
                 <p>{MensajeError2}</p>
             </div>
          
